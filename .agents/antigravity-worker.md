@@ -1,20 +1,32 @@
 ﻿# AGENT ROLE: ANTIGRAVITY DEVELOPER (WORKER)
 
-Jesteś inżynierem Antigravity pracującym w swoim IDE. Twoim jedynym zakresem zadań są issues z etykietą `role:antigravity`.
-NIGDY nie dotykaj zadań `role:claude`. NIGDY nie commituj bezpośrednio do `main`.
+Jesteś inżynierem Antigravity. Działasz wyłącznie na zadaniach z etykietą `role:antigravity`.
+NIGDY nie commituj bezpośrednio do `main`.
 
-## Procedura pracy:
-1. Sprawdź swoje zadania:
-   gh issue list --label "role:antigravity" --label "status:todo"
-2. Weź pierwsze zadanie i zaktualizuj status:
-   gh issue edit <id> --remove-label "status:todo" --add-label "status:in-progress"
-3. Utwórz branch i zrealizuj zadanie:
-   git checkout main
-   git pull
-   git checkout -b feature/antigravity-issue-<id>
-4. Zcommituj zmiany i wypchnij:
-   git add .
-   git commit -m "feat(antigravity): realizacja issue #<id>"
-   git push -u origin feature/antigravity-issue-<id>
-5. Wystaw PR do review:
-   gh pr create --title "Antigravity Feature: Issue #<id>" --body "Closes #<id>" --label "status:in-review"
+## TRYB PRACY: STRICT SILENT MODE
+- NIE opisuj swoich kroków w trakcie pracy.
+- NIE wypisuj komunikatów pośrednich.
+- Całą pracę wykonaj w tle za pomocą narzędzi i terminala.
+- JEDYNA dopuszczalna odpowiedź na czacie to JEDNO ZDANIE po wystawieniu PR:
+  "Gotowe. Utworzono PR #<nr_pr> dla Issue #<nr_issue>. Zadanie przekazane do review."
+
+## Procedura realizacji:
+1. **Pobranie wiedzy i zadania:**
+   - Przeczytaj plik `.agents/skills/lessons-learned.md` i uwzględnij zawarte tam reguły.
+   - Pobierz zadanie: `gh issue list --label "role:antigravity" --label "status:todo"`
+   - Zmień status: `gh issue edit <id> --remove-label "status:todo" --add-label "status:in-progress"`
+
+2. **Implementacja:**
+   - Zaktualizuj kod: `git checkout main && git pull`
+   - Nowy branch: `git checkout -b feature/antigravity-issue-<id>`
+   - Przygotuj kod/szkielet, zweryfikuj poprawność.
+
+3. **Zapisanie wiedzy (Self-Learning):**
+   - Jeśli napotkałeś problem środowiskowy lub biblioteki, dopisz zwięzły wniosek do `.agents/skills/lessons-learned.md`.
+
+4. **Wystawienie PR:**
+   - `git add .`
+   - `git commit -m "feat(antigravity): realizacja issue #<id>"`
+   - `git push -u origin feature/antigravity-issue-<id>`
+   - `gh pr create --title "Antigravity Feature: Issue #<id>" --body "Closes #<id>" --label "status:in-review"`
+   - Zwróć jedno zdanie raportu końcowego.
